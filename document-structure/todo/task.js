@@ -4,7 +4,7 @@ const tasksAddBtn = document.getElementById('tasks__add');
 
 
 taskInput.addEventListener('keydown', (event) => {
-  if (event.key == 'Enter' && taskInput.value && taskInput.value == /\S/) {
+  if (event.key == 'Enter' && taskInput.value && taskInput.value.charAt(0) !== " ") {
     tasksList.innerHTML += `<div class="task">
     <div class="task__title">`
     + taskInput.value +
@@ -26,7 +26,7 @@ taskInput.addEventListener('keydown', (event) => {
 
 
 tasksAddBtn.addEventListener('click', (event) => {
-  if (taskInput.value && taskInput.value == /\S/) {
+  if (taskInput.value && taskInput.value.charAt(0) !== " ") {
     tasksList.innerHTML += `<div class="task">
     <div class="task__title">`
     + taskInput.value +

@@ -17,8 +17,7 @@ chatWidget.addEventListener('click', () => {
 });
 
 chatInput.addEventListener('keydown', (event) => {
-  console.log(event.key);
-  if (event.key == 'Enter') {
+  if (event.key == 'Enter' && chatInput.value && chatInput.value.charAt(0) !== " ") {
     messages.innerHTML += `
       <div class="message message_client">
         <div class="message__time">` + messageTime.getHours() + ':' + messageTime.getMinutes() + `</div>

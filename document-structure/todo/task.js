@@ -4,7 +4,7 @@ const tasksAddBtn = document.getElementById('tasks__add');
 
 
 taskInput.addEventListener('keydown', (event) => {
-  if (event.key == 'Enter') {
+  if (event.key == 'Enter' && taskInput.value && taskInput.value == /\S/) {
     tasksList.innerHTML += `<div class="task">
     <div class="task__title">`
     + taskInput.value +
@@ -26,14 +26,16 @@ taskInput.addEventListener('keydown', (event) => {
 
 
 tasksAddBtn.addEventListener('click', (event) => {
-  tasksList.innerHTML += `<div class="task">
-  <div class="task__title">`
-  + taskInput.value +
-  `</div>
-    <a href="#" class="task__remove">&times;</a>
-  </div`;
-  event.preventDefault();
-  taskInput.value = '';
+  if (taskInput.value && taskInput.value == /\S/) {
+    tasksList.innerHTML += `<div class="task">
+    <div class="task__title">`
+    + taskInput.value +
+    `</div>
+      <a href="#" class="task__remove">&times;</a>
+    </div`;
+    event.preventDefault();
+    taskInput.value = '';
+  }
   let removeBtnList = Array.from(document.getElementsByClassName('task__remove'));
   let task = Array.from(document.getElementsByClassName('task'));
   if (removeBtnList.length != 0) {
